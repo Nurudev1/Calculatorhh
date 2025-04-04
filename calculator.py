@@ -17,7 +17,7 @@ def calculate_lamp_metrics(lamp, site_requirements):
     number_of_lamps = site_requirements['number_of_lamps']
     hours_per_day = site_requirements['hours_per_day']
     required_lumens = site_requirements['required_lumens']
-    energy_cost = site_requirements['energy_cost']
+    energy_cost = site_requirements['energy_cost']  # Energy cost per kWh
     currency = site_requirements['currency']
     
     # Calculate light output for a single lamp
@@ -26,19 +26,19 @@ def calculate_lamp_metrics(lamp, site_requirements):
     # Calculate total light output for all lamps
     total_light_output = light_output_per_lamp * number_of_lamps
     
-    # Determine suitability - compare individual lamp output to required lumens per lamp
+    # Determine suitability - compare lamp output to required lumens
     suitability = "OKAY" if light_output_per_lamp >= required_lumens else "NOT SUITABLE"
     
     # Calculate cost metrics
-    # Cost per 1000 lumen-hour
-    cost_per_1000lm_hour = (wattage * energy_cost) / (efficacy * 1000)
+    # Cost per 1000 lumen-hour (updated formula)
+    cost_per_1000lm_hour = ((energy_cost * wattage / 1000) / (light_output_per_lamp / 1000))
     
-    # Cost per required lumens
-    cost_per_req_lumens = (cost_per_1000lm_hour * required_lumens) / 1000
+    # Cost per required lumens (e.g., 30,000 lm)
+    cost_per_req_lumens = cost_per_1000lm_hour * (required_lumens / 1000)
     
-    # Calculate energy costs
+    # Calculate energy costs (updated formula)
     # Daily energy cost
-    energy_cost_per_day = number_of_lamps * wattage * hours_per_day * energy_cost / 1000
+    energy_cost_per_day = hours_per_day * number_of_lamps * cost_per_req_lumens
     
     # Yearly energy cost
     energy_cost_per_year = energy_cost_per_day * 365
