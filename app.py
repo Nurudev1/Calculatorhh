@@ -80,7 +80,7 @@ with col1:
     hours_per_day = st.number_input("Hours per Day", min_value=0.1, value=20.0, help="Hours of operation per day")
 
 with col2:
-    required_lumens = st.number_input("Required Lumens per Lamp", min_value=1, value=35000, help="Lumens required from each lamp")
+    required_lumens = st.number_input("Required Lumens per Lamp", min_value=1, value=20000, help="Lumens required from each lamp")
     currency = st.selectbox("Currency", options=["$", "€"], index=0)
     energy_cost = st.number_input(f"Energy Cost ({currency}/kWh)", min_value=0.01, value=0.30, help="Cost of energy per kilowatt-hour")
 
