@@ -49,7 +49,7 @@ if 'lamp_options' not in st.session_state:
             'make': "SustainabLED",
             'model': "SHB 160",
             'wattage': 160.0,
-            'efficacy': 220.0,
+            'efficacy': 198.0,
             'capital_cost': 102.0
         },
         {
@@ -118,7 +118,7 @@ for i, tab in enumerate(tabs):
             with col3:
                 st.markdown(f"**Capital Cost:** <span style='color:#D4AF37; font-weight:bold'>{currency}{st.session_state.lamp_options[i]['capital_cost']}</span>", unsafe_allow_html=True)
                 
-            st.markdown("<div style='background-color:#1F1F1F; border-left:3px solid #D4AF37; padding:10px; margin-top:15px;'>SustainabLED lamp specifications are fixed and cannot be modified.</div>", unsafe_allow_html=True)
+            st.markdown("<div style='background-color:#2C2C2C; border-left:3px solid #D4AF37; padding:10px; margin-top:15px;'>SustainabLED lamp specifications are fixed and cannot be modified.</div>", unsafe_allow_html=True)
         else:  # Comparison lamps - editable fields
             st.session_state.lamp_options[i]['name'] = st.text_input("Lamp Name", value=st.session_state.lamp_options[i]['name'], key=f"name_{i}")
             st.session_state.lamp_options[i]['make'] = st.text_input("Make", value=st.session_state.lamp_options[i]['make'], key=f"make_{i}")
@@ -152,7 +152,7 @@ st.markdown("""
 <style>
     div.stButton > button:first-child {
         background-color: #D4AF37;
-        color: white;
+        color: #0E1117;
         font-weight: bold;
         border: none;
         padding: 10px 20px;
@@ -161,6 +161,20 @@ st.markdown("""
     div.stButton > button:hover {
         background-color: #B8860B; 
         color: white;
+    }
+    /* Add custom styling for dataframes to enhance visibility on dark theme */
+    .dataframe {
+        color: #F0F2F6 !important;
+        background-color: #1E1E1E !important;
+    }
+    .dataframe th {
+        background-color: #2C2C2C !important;
+        color: #D4AF37 !important;
+    }
+    /* Style for expander content */
+    .streamlit-expander {
+        border-color: #2C2C2C !important;
+        background-color: #1E1E1E !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -253,7 +267,7 @@ if st.button("⚡ Calculate and Compare ⚡", type="primary"):
         
         st.dataframe(detailed_df.style.applymap(color_suitability, subset=['Suitability']))
     else:
-        st.warning("Please enter valid data for at least one lamp option.")
+        st.error("Please enter valid data for at least one lamp option.")
 
 # Add explanations
 with st.expander("Understanding the Calculations"):
