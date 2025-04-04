@@ -3,11 +3,55 @@ import pandas as pd
 import numpy as np
 from calculator import calculate_lamp_metrics
 
-# Set page title and layout
+# Set page title, layout, and theme (forcing dark mode)
 st.set_page_config(
     page_title="Lighting Efficiency & Cost Calculator",
-    layout="wide"
+    layout="wide", 
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': "Lighting Efficiency & Cost Calculator © SustainabLED"
+    }
 )
+
+# Force dark theme through custom CSS
+st.markdown("""
+<style>
+    /* Force the theme to dark */
+    .stApp {
+        background-color: #0E1117;
+        color: #F0F2F6;
+    }
+    /* Headers and text */
+    h1, h2, h3, h4, h5, h6, p, span, div, label {
+        color: #F0F2F6 !important;
+    }
+    /* Input fields */
+    .stTextInput, .stNumberInput, .stSelectbox {
+        background-color: #262730 !important;
+        color: #F0F2F6 !important;
+    }
+    /* Tabs styling */
+    .stTabs [role="tab"] {
+        background-color: #1E1E1E !important;
+        color: #D4AF37 !important;
+    }
+    .stTabs [role="tab"][aria-selected="true"] {
+        background-color: #2C2C2C !important;
+        border-bottom: 2px solid #D4AF37 !important;
+    }
+    /* Expander styling */
+    .streamlit-expanderHeader {
+        background-color: #1E1E1E !important;
+        color: #F0F2F6 !important;
+    }
+    .streamlit-expanderContent {
+        background-color: #262730 !important;
+        color: #F0F2F6 !important;
+    }
+</style>
+""", unsafe_allow_html=True)
 st.title("Lighting Efficiency & Cost Calculator")
 st.markdown("Compare different lamp options for your lighting projects")
 
@@ -80,7 +124,7 @@ with col1:
     hours_per_day = st.number_input("Hours per Day", min_value=0.1, value=20.0, help="Hours of operation per day")
 
 with col2:
-    required_lumens = st.number_input("Required Lumens per Lamp", min_value=1, value=20000, help="Lumens required from each lamp")
+    required_lumens = st.number_input("Required Lumens per Lamp", min_value=1, value=35000, help="Lumens required from each lamp")
     currency = st.selectbox("Currency", options=["$", "€"], index=0)
     energy_cost = st.number_input(f"Energy Cost ({currency}/kWh)", min_value=0.01, value=0.30, help="Cost of energy per kilowatt-hour")
 
