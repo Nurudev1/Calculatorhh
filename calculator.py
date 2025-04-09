@@ -53,20 +53,21 @@ def calculate_lamp_metrics(lamp, site_requirements):
     total_5year_cost = total_capital_cost + energy_cost_5years
     
     # Return all metrics in a dictionary
+    # added a rounding factor
     return {
         'name': lamp['name'],
         'make': lamp['make'],
         'model': lamp['model'],
-        'wattage': wattage,
-        'efficacy': efficacy,
-        'light_output_per_lamp': light_output_per_lamp,
-        'total_light_output': total_light_output,
+        'wattage': round(wattage, 2),
+        'efficacy': round(efficacy, 2),
+        'light_output_per_lamp': round(light_output_per_lamp, 2),
+        'total_light_output': round(total_light_output, 2),
         'suitability': suitability,
-        'cost_per_1000lm_hour': cost_per_1000lm_hour,
-        'cost_per_req_lumens': cost_per_req_lumens,
-        'energy_cost_per_day': energy_cost_per_day,
-        'energy_cost_per_year': energy_cost_per_year,
-        'energy_cost_5years': energy_cost_5years,
-        'total_capital_cost': total_capital_cost,
-        'total_5year_cost': total_5year_cost
+        'cost_per_1000lm_hour': round(cost_per_1000lm_hour, 2),
+        'cost_per_req_lumens': round(cost_per_req_lumens, 2),
+        'energy_cost_per_day': round(energy_cost_per_day, 2),
+        'energy_cost_per_year': round(energy_cost_per_year, 2),
+        'energy_cost_5years': round(energy_cost_5years, 2),
+        'total_capital_cost': round(total_capital_cost, 2),
+        'total_5year_cost': round(total_5year_cost, 2)
     }
