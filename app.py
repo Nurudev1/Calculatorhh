@@ -82,7 +82,7 @@ st.markdown("Compare different lamp options for your lighting projects")
 st.markdown("<hr style='height:3px;border:none;color:#D4AF37;background-color:#D4AF37;margin:15px 0px 20px 0px;'/>", unsafe_allow_html=True)
 
 # SustainabLED info section
-with st.expander("About SustainabLED", expanded=false):
+with st.expander("About SustainabLED", expanded=False):
     col1, col2 = st.columns([1, 3])
     with col1:
         st.markdown("### <span style='color:#D4AF37'>SustainabLED</span>", unsafe_allow_html=True)
