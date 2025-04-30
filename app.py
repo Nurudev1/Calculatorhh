@@ -206,6 +206,8 @@ if st.button("Calculate"):
         efficiency_df = results_df[['name', 'cost_per_1000lm_hour', 'cost_per_req_lumens']].copy()
         efficiency_df.columns = ['Lamp Name', f'Cost per 1000 lm/hour ({currency})', f'Cost per Required Lumens ({currency})']
         efficiency_df[f'Cost per 1000 lm/hour ({currency})'] = efficiency_df[f'Cost per 1000 lm/hour ({currency})'].apply(lambda x: f"{float(x):.4f}")
+        efficiency_df[f'Cost per Required Lumens ({currency})'] = efficiency_df[f'Cost per Required Lumens ({currency})'].apply(lambda x: f"{float(x):.4f}")
+        
         st.dataframe(efficiency_df)
 
         # Energy Costs
