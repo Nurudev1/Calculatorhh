@@ -157,8 +157,7 @@ with col1:
 
 with col2:
     required_lumens = st.number_input("Required Lumens per Lamp", min_value=1, value=None, placeholder="Enter lumens requirement", help="Lumens required from each lamp")
-    currency = st.selectbox("Currency", options=["$", "€"], index=0)
-    energy_cost = st.number_input(f"Energy Cost ({currency}/kWh)", min_value=0.01, value=None, placeholder="Enter energy cost", help="Cost of energy per kilowatt-hour")
+    energy_cost = st.number_input(f"Energy Cost (€/kWh)", min_value=0.01, value=None, placeholder="Enter energy cost", help="Cost of energy per kilowatt-hour")
 
 # Step 2: Lamp Options
 st.markdown("""
