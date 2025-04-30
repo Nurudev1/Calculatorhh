@@ -234,8 +234,9 @@ if st.button("Calculate"):
             <p>Based on your requirements, <strong>{results_df.loc[results_df['total_5year_cost'].astype(float).idxmin(), 'name']}</strong> offers the best value and potential savings shown above compared to your alternatives.</p>
         </div>
         """, unsafe_allow_html=True)
+        
 
-    # Footer with gold styling
-    st.markdown("<hr style='height:2px;border:none;color:#D4AF37;bac...ound-color:#D4AF37;margin-top:30px;'/>", unsafe_allow_html=True)
-    st.markdown("<div style='display:flex;justify-content:center;mar...t Calculator © SustainabLED</h3></div>", unsafe_allow_html=True)
-    st.markdown("<div style='display:flex;justify-content:center;'><...and cost-effective solution</em></div>", unsafe_allow_html=True)
+# Footer with gold styling
+st.markdown("<hr style='height:2px;border:none;color:#D4AF37;background-color:#D4AF37;margin-top:30px;'/>", unsafe_allow_html=True)
+st.markdown("<div style='display:flex;justify-content:center;margin-top:20px;'><h3 style='color:#D4AF37;'>Lighting Efficiency & Cost Calculator © SustainabLED</h3></div>", unsafe_allow_html=True)
+st.markdown("<div style='display:flex;justify-content:center;'><em>Compare your lighting options to find the most efficient and cost-effective solution</em></div>", unsafe_allow_html=True)
